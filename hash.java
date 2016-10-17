@@ -1,6 +1,8 @@
 import java.util.*;
 import java.io.File;
 import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
 class hash{
     public static void main(String args[]){
         HashMap<String,HashMap<File,Integer>> Index=new HashMap<String, HashMap<File,Integer>>();
@@ -59,12 +61,34 @@ class hash{
             }
         }
         System.out.println("Hash Table created.......");    
-        doc=new HashMap<File,Integer>();
+       doc=new HashMap<File,Integer>();
         doc=Index.get("result");
-        for(File f:doc.keySet()){
+        File keys[]=null;
+        keys=doc.keySet().toArray(new File[doc.size()]);
+        Arrays.sort(keys, new Comparator<File>() {
+            public int compare(File o1, File o2) {
+                int n1 = extractNumber(o1.getName());
+                int n2 = extractNumber(o2.getName());
+                return n1 - n2;
+            }
+            private int extractNumber(String name) {
+                int i = 0;
+                try {
+                    int s = name.lastIndexOf('/')+1;
+                    int e = name.lastIndexOf('.');
+                    String number = name.substring(s, e);
+                    i = Integer.parseInt(number);
+                } catch(Exception e) {
+                    i = 0;
+                }
+                return i;
+            }
+        });
+        for(File f:keys){
             String value = doc.get(f).toString();  
             System.out.println(f+"\n"+value);  
         }
+
         }
     catch(Exception e){
         System.out.println(e);
