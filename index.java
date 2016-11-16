@@ -12,9 +12,9 @@ class index{
 		try{
             File input=new File("/home/aravilla/ISR/Dataset/");
             File[] listFile = input.listFiles(); 
-            int i=0;
-            for(File f:listFile){ 
-                i++;
+                        int i=0;
+			for(File f:listFile){ 
+				i++;
                 LineNumberReader lr=new LineNumberReader(new FileReader(f));
                 String line="";
                 String[] words={""};
@@ -22,6 +22,7 @@ class index{
                     words=line.split(" ");
                     for(String term:words){
                         term=term.trim();
+						term=term.replaceAll("[\\-\\+\\.^:,/\\)\\(\\[\\]]","");
                         if(Index.containsKey(term)){
                             doc=Index.get(term);
                             if(doc.containsKey(f)){
@@ -36,7 +37,6 @@ class index{
                             }
                         }
                         else{
-							System.out.println(" Term :  "+term);
                             doc=new HashMap<File,Integer>();
                             doc.put(f,1);
                             Index.put(term,doc);
@@ -49,6 +49,7 @@ class index{
 		catch(Exception e){
 			System.out.println(e);
 		}
+		//System.out.println("In function "+Index.size());
 		return Index;
 	}
 }
