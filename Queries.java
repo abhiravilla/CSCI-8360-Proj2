@@ -29,7 +29,7 @@ void stopwords()	{
 				String[] words=line1.split(" ");
                 if(words[0].equals(".I"))
 				{  
-				        file=new File("/home/aravilla/ISR/Queryset/query"+words[1]+".txt/");
+				        file=new File("Queryset/query"+words[1]+".txt/");
 				        fw = new FileWriter(file,true);					   
 						 bw = new BufferedWriter(fw);			
 				}
