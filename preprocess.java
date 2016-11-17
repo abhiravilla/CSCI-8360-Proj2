@@ -1,6 +1,8 @@
 
 import java.io.*;
 import java.util.*;
+import java.io.*;
+import java.util.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,7 +15,7 @@ public class preprocess
 	{
 		try
 		{
-		File fr = new File("/home/aravilla/stopwords.txt");
+		File fr = new File("stopwords.txt");
 		Map<String,Integer> swords = new HashMap<String,Integer>();
 		LineNumberReader lr = new LineNumberReader(new FileReader(fr));
 		String line="";
@@ -21,7 +23,7 @@ public class preprocess
 			   swords.put(line,1);
 		}
 		lr.close();
-			File fr1=new File("/home/aravilla/ISR/dataset.txt");
+			File fr1=new File("dataset.txt");
 			LineNumberReader lr1=new LineNumberReader(new FileReader(fr1));
 			String line1=" ";
 			File file=null;
@@ -33,7 +35,7 @@ public class preprocess
 				String[] words=line1.split(" ");
                 if(words[0].equals(".I"))
 				{  
-				        file=new File("/home/aravilla/ISR/Dataset/file"+words[1]+".txt/");
+				        file=new File("Dataset/"+words[1]+".txt/");
 				        fw = new FileWriter(file,true);					   
 						 bw = new BufferedWriter(fw);			
 				}
@@ -77,4 +79,5 @@ public class preprocess
 		pr.stopwords();
 	}
 }
+
 
