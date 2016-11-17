@@ -318,3 +318,6 @@ yours
 yourself
 yourselves
 .
+.W
+.A
+.B
