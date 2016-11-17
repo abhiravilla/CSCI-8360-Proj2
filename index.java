@@ -10,7 +10,7 @@ class index{
 		HashMap<String,HashMap<File,Integer>> Index=new HashMap<String, HashMap<File,Integer>>();
 		HashMap<File,Integer> doc=new HashMap<File,Integer>();
 		try{
-            File input=new File("/home/aravilla/ISR/Dataset/");
+            File input=new File("Dataset/");
             File[] listFile = input.listFiles(); 
                         int i=0;
 			for(File f:listFile){ 
